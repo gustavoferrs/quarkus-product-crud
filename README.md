@@ -1,78 +1,118 @@
-# code-with-quarkus
+# Product CRUD --- Quarkus Unit Testing Example
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+This repository contains the example code used in an article about how
+to write effective **unit tests in Quarkus**.\
+It implements a simple Product CRUD and demonstrates how to structure,
+isolate, and test business logic using the **AAA pattern (Arrange ---
+Act --- Assert)**.
 
-If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
+## 🧪 Purpose
 
-## Running the application in dev mode
+The goal of this project is to serve as a clean and minimal codebase to
+teach:
 
-You can run your application in dev mode that enables live coding using:
+-   How to write **unit tests** in Quarkus\
+-   How to mock dependencies using **Mockito**\
+-   How to test business rules instead of just REST endpoints\
+-   How to organize test classes following best practices\
+-   How to structure code to make testing easier
 
-```shell script
+## 🚀 Running the Application
+
+Run in development mode:
+
+``` bash
 ./mvnw quarkus:dev
 ```
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at <http://localhost:8080/q/dev/>.
+Quarkus Dev UI:
 
-## Packaging and running the application
+    http://localhost:8080/q/dev/
 
-The application can be packaged using:
+Quarkus Swagger UI:
 
-```shell script
+    http://localhost:8080/swagger-ui
+
+## 🧪 Running Tests
+
+To execute all unit tests:
+
+``` bash
+./mvnw test
+```
+
+The tests follow the **AAA structure**:
+
+-   **Arrange:** prepare mocks, inputs, and scenarios\
+-   **Act:** call the method under test\
+-   **Assert:** verify results, interactions, and exceptions
+
+## 📂 Project Structure
+
+    src/
+     ├── main/java/.../ferrs
+     │     ├── dtos 
+     │     │     ├──ProductRequestDto.java
+     │     │     └──ProductResponseDto.java
+     │     ├── entities 
+     │     │     └──Product.java
+     │     ├── repository 
+     │     │     └──ProductRepository.java
+     │     ├── resource 
+     │     │     └──ProductResource.java
+     │     └── service
+     │           └──ProductService.java
+     └── test/java/.../ferrs/service
+           └── ProductServiceTest.java
+
+## 🧰 Tech Stack
+
+-   **Java 17**
+-   **Quarkus**
+-   **RESTEasy Reactive**
+-   **Hibernate ORM with Panache**
+-   **H2 Database**
+-   **JUnit 5**
+-   **Mockito**
+
+## 📦 Packaging the Application
+
+Package:
+
+``` bash
 ./mvnw package
 ```
 
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
+Run:
 
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
+``` bash
+java -jar target/quarkus-app/quarkus-run.jar
+```
 
-If you want to build an _über-jar_, execute the following command:
+Build an uber-jar:
 
-```shell script
+``` bash
 ./mvnw package -Dquarkus.package.jar.type=uber-jar
 ```
 
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
+## ❄️ Native Build (Optional)
 
-## Creating a native executable
-
-You can create a native executable using:
-
-```shell script
+``` bash
 ./mvnw package -Dnative
 ```
 
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using:
+Or using container-based native build:
 
-```shell script
+``` bash
 ./mvnw package -Dnative -Dquarkus.native.container-build=true
 ```
 
-You can then execute your native executable with: `./target/code-with-quarkus-1.0.0-SNAPSHOT-runner`
+## 📄 About the Article
 
-If you want to learn more about building native executables, please consult <https://quarkus.io/guides/maven-tooling>.
+This codebase was created exclusively to support an article explaining
+**how to create clean and maintainable unit tests in Quarkus**, focusing
+on correctness, clarity, and best testing practices.
 
-## Related Guides
+------------------------------------------------------------------------
 
-- REST ([guide](https://quarkus.io/guides/rest)): A Jakarta REST implementation utilizing build time processing and Vert.x. This extension is not compatible with the quarkus-resteasy extension, or any of the extensions that depend on it.
-- JDBC Driver - H2 ([guide](https://quarkus.io/guides/datasource)): Connect to the H2 database via JDBC
-- REST Jackson ([guide](https://quarkus.io/guides/rest#json-serialisation)): Jackson serialization support for Quarkus REST. This extension is not compatible with the quarkus-resteasy extension, or any of the extensions that depend on it
-- Hibernate ORM with Panache ([guide](https://quarkus.io/guides/hibernate-orm-panache)): Simplify your persistence code for Hibernate ORM via the active record or the repository pattern
-
-## Provided Code
-
-### Hibernate ORM
-
-Create your first JPA entity
-
-[Related guide section...](https://quarkus.io/guides/hibernate-orm)
-
-[Related Hibernate with Panache section...](https://quarkus.io/guides/hibernate-orm-panache)
-
-
-### REST
-
-Easily start your REST Web Services
-
-[Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
+If you find this project useful, feel free to ⭐ star the repository!
