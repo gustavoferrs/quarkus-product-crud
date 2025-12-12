@@ -11,11 +11,19 @@ Act --- Assert)**.
 The goal of this project is to serve as a clean and minimal codebase to
 teach:
 
--   How to write **unit tests** in Quarkus\
--   How to mock dependencies using **Mockito**\
--   How to test business rules instead of just REST endpoints\
--   How to organize test classes following best practices\
+-   How to write **unit tests** in Quarkus
+-   How to mock dependencies using **Mockito**
+-   How to test business rules instead of just REST endpoints
+-   How to organize test classes following best practices
 -   How to structure code to make testing easier
+
+### Available Branches
+
+- **main**: main: contains the complete CRUD implementation and only the tests for the `create` method.
+  Ideal for readers following the article who want to practice writing the remaining tests on their own.
+
+- **full-tests**: includes all the finished tests (create, update, delete, findAll, findById, business rules, and exceptions).
+  Use this branch to compare your solution or study more advanced test scenarios.
 
 ## 🚀 Running the Application
 
