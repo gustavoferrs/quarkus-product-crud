@@ -42,6 +42,9 @@ public class ProductServiceTest {
     ProductResponseDto response = service.create(dto);
 
     // Assert
+    assertEquals("Monitor", response.name());
+    assertEquals(1500.0, response.price());
+    assertEquals(1L, response.id());
     verify(repository, times(1)).persist(any(Product.class));
   }
 
@@ -61,6 +64,9 @@ public class ProductServiceTest {
     ProductResponseDto response = service.create(dto);
 
     // Assert
+    assertEquals("Monitor", response.name());
+    assertEquals(1610.0, response.price()); // O valor esperado foi alterado para refletir o cálculo com a taxa
+    assertEquals(1L, response.id());
     verify(repository, times(1)).persist(any(Product.class));
   }
 
